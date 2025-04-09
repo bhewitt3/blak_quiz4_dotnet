@@ -27,7 +27,7 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
-    arguments: '--configuration $(buildConfiguration) -- output $(publishDir)'
+    arguments: '--configuration $(buildConfiguration) --output $(publishDir)'
     zipAfterPublish: false
 
 - task: ArchiveFiles@2
