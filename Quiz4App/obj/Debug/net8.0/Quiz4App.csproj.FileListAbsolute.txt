@@ -28,3 +28,4 @@ C:\Users\blake\source\repos\Quiz4App\Quiz4App\obj\Debug\net8.0\refint\Quiz4App.d
 C:\Users\blake\source\repos\Quiz4App\Quiz4App\obj\Debug\net8.0\Quiz4App.pdb
 C:\Users\blake\source\repos\Quiz4App\Quiz4App\obj\Debug\net8.0\Quiz4App.genruntimeconfig.cache
 C:\Users\blake\source\repos\Quiz4App\Quiz4App\obj\Debug\net8.0\ref\Quiz4App.dll
+C:\Users\blake\source\repos\Quiz4App\Quiz4App\obj\Debug\net8.0\Quiz4App.sourcelink.json
