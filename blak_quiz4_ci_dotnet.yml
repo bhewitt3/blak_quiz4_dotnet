@@ -1,0 +1,42 @@
+trigger:
+- main
+
+pool:
+  name: MyAgentPool
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  publishDir: '$(Build.ArtifactStagingDirectory)/WebApp'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  displayName: 'Publish ASP.Net App'
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '--configuration $(buildConfiguration) -- output $(publishDir)'
+    zipAfterPublish: false
+
+- task: ArchiveFiles@2
+  displayName: 'Archive Webapp files'
+  inputs:
+    rootFolderOrFile: '$(publishDir)'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/WebApp.zip'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '$(Build.ArtifactStagingDirectory)/WebApp.zip'
+    artifactName: 'drop'
